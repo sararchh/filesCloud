@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Storage from '../pages/Storage';
+import PrivateRoute from '../pages/PrivateRoute';
 
 const NotFound = () => {
   return (
@@ -17,8 +18,7 @@ const RoutesApp = () => {
       <Route path='/' element={<Register />} />
       <Route path='/login' element={<Login />} />
 
-      {/* <Route path='/home' element={<ProtectedRouteGuard><Home /></ProtectedRouteGuard>} /> */}
-      <Route path='/storage' element={<Storage />} />
+      <Route path='/storage' element={<PrivateRoute> <Storage /> </PrivateRoute>} />
 
 
     </Routes>

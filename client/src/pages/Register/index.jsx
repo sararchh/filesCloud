@@ -9,27 +9,53 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { SignUp } from "../../services/authApi";
 
 const Register = () => {
   const navigate = useNavigate();
 
-  const schema = z.object({
-    email: z.string().min(1, { message: 'Required' }).nonempty("Is required"),
-    password: z.string().min(1, { message: 'Required' }).nonempty("Is required"),
-    name: z.string().min(1, { message: 'Required' }).nonempty("Is required")
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().min(2).required("Is required"),
+    password: Yup.string().required("Is required"),
+    name: Yup.string().required("Is required"),
+    terms: Yup.boolean(),
   });
 
-  const { setValue, getValues } = useForm({
-    resolver: zodResolver(schema),
-  });
+  const formOptions = { resolver: yupResolver(validationSchema) }
 
-  const handleSubmitValues = (e) => {
+  const { handleSubmit, setValue, getValues, formState } = useForm(formOptions);
+  const { errors } = formState;
+
+  const handleSubmitValues = async (e) => {
     e.preventDefault();
-    const values = getValues();
-    console.log(values);
+
+    try {
+      const values = getValues();
+
+      if (values.terms !== true) {
+        return toast.error("Aceite os termos");
+      }
+
+      const obj = {
+        name: values.name,
+        email: values.email,
+        password: values.password
+      }
+
+      await SignUp(obj);
+
+      navigate("/storage");
+      toast.success("Cadastro com sucesso");
+    } catch (error) {
+      console.log(error);
+      toast.error("Erro ao cadastrar, verifique")
+    }
+
   }
 
   return (
@@ -54,6 +80,7 @@ const Register = () => {
                 padding="0.8rem"
                 value={getValues("name")}
                 onChange={(value) => setValue("name", value)}
+                required
               />
 
               <Input
@@ -69,6 +96,7 @@ const Register = () => {
                 padding="0.8rem"
                 value={getValues("email")}
                 onChange={(value) => setValue("email", value)}
+                required
               />
 
               <Input
@@ -85,6 +113,7 @@ const Register = () => {
                 padding="0.8rem"
                 value={getValues("password")}
                 onChange={(value) => setValue("password", value)}
+                required
               />
             </div>
 
@@ -93,6 +122,8 @@ const Register = () => {
               <input
                 type="checkbox"
                 className="inputCheckbox"
+                value={getValues("terms")}
+                onChange={(e) => setValue("terms", e.target.checked)}
               />
 
               <div>
@@ -124,12 +155,12 @@ const Register = () => {
               background="transparent"
               border="none"
               onClick={() => navigate("/login")}
-                >
-                <span className="textPoppinsTerms">Login</span>
+            >
+              <span className="textPoppinsTerms">Login</span>
             </Button>
+          </div>
         </div>
       </div>
-    </div>
     </ThowColumnLayoutLoginRegister >
   );
 }

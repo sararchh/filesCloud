@@ -2,7 +2,7 @@ import React from "react";
 
 import "./style.css"
 
-const Input = ({ type = "input", width, height, background, border, borderRadius, marginTop, marginBottom, marginRight, marginLeft, name = "", placeholder, outline, padding, value, onChange, marginTopLabel }) => {
+const Input = ({ type = "input", width, height, background, border, borderRadius, marginTop, marginBottom, marginRight, marginLeft, name = "", placeholder, outline, padding, value, onChange, marginTopLabel, required = false }) => {
 
   const styleInput = {
     width: width,
@@ -28,6 +28,7 @@ const Input = ({ type = "input", width, height, background, border, borderRadius
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        required={required}
       />
     </div>
   );

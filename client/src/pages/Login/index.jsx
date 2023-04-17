@@ -9,19 +9,21 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup'; 
 
 const Login = () => {
 
-  const schema = z.object({
-    email: z.string().min(1, { message: 'Required' }).nonempty("Is required"),
-    password: z.string().min(1, { message: 'Required' }).nonempty("Is required")
+  const validationSchema = z.object({
+    email: z.string().min(1, { message: 'Required' }).required("Is required"),
+    password: z.string().min(1, { message: 'Required' }).required("Is required")
   });
 
-  const { setValue, getValues } = useForm({
-    resolver: zodResolver(schema),
-  });
+  const formOptions = { resolver: yupResolver(validationSchema) }
+
+  const { handleSubmit, setValue, getValues, formState } = useForm(formOptions);
+  const { errors } = formState;
+
 
   const handleSubmitValues = (e) => {
     e.preventDefault();
@@ -51,6 +53,7 @@ const Login = () => {
                 padding="0.8rem"
                 value={getValues("email")}
                 onChange={(value) => setValue("email", value)}
+                required
               />
 
               <Input
@@ -68,6 +71,7 @@ const Login = () => {
                 padding="0.8rem"
                 value={getValues("password")}
                 onChange={(value) => setValue("password", value)}
+                required
               />
             </div>
 

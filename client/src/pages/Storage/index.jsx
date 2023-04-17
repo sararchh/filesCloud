@@ -24,7 +24,7 @@ const Storage = () => {
     setFolders(response);
   }
 
-  console.log(folders);
+  // console.log(folders);
 
   return (
     <MainLayout>
@@ -63,14 +63,14 @@ const Storage = () => {
 
       <div className="contentCardFolders">
 
-        {Boolean(folders.length) && folders?.map((item) => (
-          <>
+        {Boolean(folders.length) && folders?.map((item, index) => (
+          <div key={index}>
             <CardFolder
-            title={item.title}
-            files_count={item.files_count}
-            date={item.date}
+              title={item.title}
+              files_count={item.files_count}
+              date={item.date}
             />
-          </>
+          </div>
         ))}
 
       </div>

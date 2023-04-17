@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 
-import Input from "../../components/Input";
-
 import { FiSearch } from "react-icons/fi";
 
 import Button from "../../components/Button";
 import CardFolder from "../../components/CardFolder";
+import Input from "../../components/Input";
 
-import "./style.css";
 import { getFolders } from "../../services/foldersApi";
 
+import "./style.css";
 const Storage = () => {
   const [valueInput, setValueInput] = useState();
   const [folders, setFolders] = useState([]);
@@ -66,15 +65,12 @@ const Storage = () => {
         {Boolean(folders.length) && folders?.map((item, index) => (
           <div key={index}>
             <CardFolder
-              title={item.title}
-              files_count={item.files_count}
-              date={item.date}
+              props={item}
             />
           </div>
         ))}
 
       </div>
-
     </MainLayout>
   );
 

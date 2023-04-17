@@ -138,3 +138,12 @@ html {
   line-height: 16px;
   color: #000000;
 }
+
+.textPoppinsRed {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+  color: #EA0000;
+}

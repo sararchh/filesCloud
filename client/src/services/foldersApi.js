@@ -5,3 +5,9 @@ export const getFolders = async () => {
 
   return data;
 } 
+
+export const deleteFolder = async (id) => {
+  const { data } = await api.delete(`/folders/id`);
+
+  return data;
+} 

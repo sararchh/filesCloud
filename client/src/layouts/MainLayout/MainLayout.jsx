@@ -18,7 +18,7 @@ const MainLayout = ({ children }) => {
           <div className="contentHeaderUser">
             <div style={{display: "flex", alignItems:"center"}}>
               <img className="imgAvatar" src="https://http.cat/200" alt="avatar" />
-              <p>Nome do User</p>
+              <p className="textConfortaa">Nome do User</p>
             </div>
             <MdOutlineKeyboardArrowDown />
           </div>

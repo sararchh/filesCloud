@@ -1,0 +1,64 @@
+.containerCardFolder {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 10px;
+
+  width: 327.38px;
+  height: 168px;
+
+  background: #FFFFFF;
+  border: 1px solid #D7D7D7;
+  border-radius: 10px;
+
+  position: relative;
+}
+
+.divFolderIcon {
+  width: 45px;
+  height: 45px;
+  background: #EBF5FF;
+  mix-blend-mode: normal;
+  border-radius: 6px;
+  box-shadow: 0px 2px 100px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.svgFolder {
+  color: #476EE6;
+  height: 21px;
+  width: 21px;
+}
+
+.containerCardInfoFolder {
+  width: 90%;
+  display: flex;
+}
+
+.svgEllipsis {
+  color: #667085;
+  width: 17px;
+  height: 17px;
+
+  position: absolute;
+  top: 28px;
+  right: 20px;
+}
+
+.spanQtdFiles {
+  min-width: 78.12px;
+  width: 78.12px;
+  min-height: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #EBF5FF;
+  border-radius: 7px;
+}

@@ -5,8 +5,10 @@ import Input from "../../components/Input";
 
 import { FiSearch } from "react-icons/fi";
 
-import "./style.css";
 import Button from "../../components/Button";
+import CardFolder from "../../components/CardFolder";
+
+import "./style.css";
 
 const Storage = () => {
   const [valueInput, setValueInput] = useState();
@@ -19,6 +21,7 @@ const Storage = () => {
           <Input
             width="331px"
             height="45px"
+            outline="none"
             borderRadius="60px"
             border="1px solid #D7D7D7"
             background="#FFFFFF"
@@ -45,8 +48,14 @@ const Storage = () => {
         </Button>
       </div>
 
+      <div className="contentCardFolders">
+        <CardFolder />
+        <CardFolder />
+        <CardFolder />
+        <CardFolder />
+        <CardFolder />
+      </div>
 
-      <p>Storage</p>
     </MainLayout>
   );
 

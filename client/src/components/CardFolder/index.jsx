@@ -4,7 +4,7 @@ import { FaEllipsisV } from "react-icons/fa";
 
 import "./style.css";
 
-const CardFolder = () => {
+const CardFolder = ({title, files_count, date}) => {
   return (
     <div className="containerCardFolder">
 
@@ -14,8 +14,8 @@ const CardFolder = () => {
         </div>
 
         <div style={{ marginBottom: "1.2rem" }}>
-          <p className="textPoppinsTitleCardFolder">Notas Fiscais</p>
-          <p className="textPoppinsSubtitleCardFolder">9 de setembro de 2023</p>
+          <p className="textPoppinsTitleCardFolder">{title}</p>
+          <p className="textPoppinsSubtitleCardFolder">{date}</p>
         </div>
 
         <FaEllipsisV className="svgEllipsis" />
@@ -23,7 +23,7 @@ const CardFolder = () => {
 
       <p className="textPoppinsDocsCardFolder">N° de documentos</p>
       <span className="spanQtdFiles">
-        <p className="textPoppinsDocsQtdFiles">750</p>
+        <p className="textPoppinsDocsQtdFiles">{files_count}</p>
       </span>
 
     </div>

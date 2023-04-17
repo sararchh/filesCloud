@@ -62,11 +62,17 @@ const Storage = () => {
       </div>
 
       <div className="contentCardFolders">
-        <CardFolder />
-        <CardFolder />
-        <CardFolder />
-        <CardFolder />
-        <CardFolder />
+
+        {Boolean(folders.length) && folders?.map((item) => (
+          <>
+            <CardFolder
+            title={item.title}
+            files_count={item.files_count}
+            date={item.date}
+            />
+          </>
+        ))}
+
       </div>
 
     </MainLayout>

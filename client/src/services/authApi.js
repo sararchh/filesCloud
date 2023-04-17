@@ -7,4 +7,14 @@ export const SignUp = async (values) => {
   localStorage.setItem("@MAIL", JSON.stringify(data.user));
 
   return data;
+}
+
+export const SignIn = async (values) => {
+  console.log(values);
+  const { data } = await api.post("/sign-in", values);
+
+  localStorage.setItem("@TOKEN", data.token);
+  localStorage.setItem("@MAIL", JSON.stringify(data.user));
+
+  return data;
 } 

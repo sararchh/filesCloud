@@ -7,28 +7,36 @@ import ThowColumnLayoutLoginRegister from "../../layouts/LayoutLoginRegister/Tho
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import { SignIn } from "../../services/authApi";
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup'; 
+import * as Yup from 'yup';
+
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
 
-  const validationSchema = z.object({
-    email: z.string().min(1, { message: 'Required' }).required("Is required"),
-    password: z.string().min(1, { message: 'Required' }).required("Is required")
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().min(1, { message: 'Required' }).required("Is required"),
+    password: Yup.string().min(1, { message: 'Required' }).required("Is required")
   });
 
   const formOptions = { resolver: yupResolver(validationSchema) }
 
-  const { handleSubmit, setValue, getValues, formState } = useForm(formOptions);
-  const { errors } = formState;
+  const { setValue, getValues } = useForm(formOptions);
 
-
-  const handleSubmitValues = (e) => {
+  const handleSubmitValues = async (e) => {
     e.preventDefault();
     const values = getValues();
-    console.log(values);
+    try {
+      await SignIn(values);
+      navigate("/storage");
+    } catch (error) {
+      toast.error("Erro ao Logar")
+    }
   }
 
   return (
@@ -75,23 +83,23 @@ const Login = () => {
               />
             </div>
 
-          </form>
-          <div className="containerLogin">
-            <div className="containerLogin" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <Button
-                width="11rem"
-                height="2.81rem"
-                background="#476EE6"
-                borderRadius="60px"
-                color="white"
-                border="none"
-              >
-                <span className="textPoppinsButtonRegister">Entrar</span>
-              </Button>
+            <div className="containerLogin">
+              <div className="containerLogin" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <Button
+                  width="11rem"
+                  height="2.81rem"
+                  background="#476EE6"
+                  borderRadius="60px"
+                  color="white"
+                  border="none"
+                >
+                  <span className="textPoppinsButtonRegister">Entrar</span>
+                </Button>
 
-              <span className="textPoppinsTerms">Esqueceu a senha?</span>
+                <span className="textPoppinsTerms">Esqueceu a senha?</span>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </ThowColumnLayoutLoginRegister>

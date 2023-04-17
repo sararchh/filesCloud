@@ -1,0 +1,21 @@
+
+.inputSearch {
+  position: relative;
+  height: 45px;
+}
+
+.svgSearch {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+
+  width: 24px;
+  height: 24px;
+  color: #476EE6;
+}
+
+.contentSearch {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

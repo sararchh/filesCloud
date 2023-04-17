@@ -1,0 +1,46 @@
+{
+  "name": "node-startpn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development && nodemon src/server.js",
+    "start": "node dist/server.js",
+    "build": "rm -rf dist && rm -rf upload && sucrase ./src -d ./dist --transforms imports && yarn build:client && yarn copy:client",
+    "build:client": "cd client && yarn build && cd ..",
+    "copy:client": "copyfiles -a client/dist/**/* dist/",
+    "db:migrate": "yarn sequelize db:migrate",
+    "db:seed": "yarn sequelize db:seed:all",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sara Rocha de Oliveira",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "aws-sdk": "^2.1359.0",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.2.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.31.0",
+    "sharp": "^0.32.0",
+    "swagger-ui-express": "^4.6.2",
+    "util": "^0.12.5",
+    "yup": "^1.1.0"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "dotenv-expand": "^10.0.0",
+    "nodemon": "^2.0.22",
+    "sequelize-cli": "^6.6.0",
+    "sucrase": "^3.32.0"
+  }
+}

@@ -1,0 +1,34 @@
+.contentMain {
+  width: calc(100% - 229px);
+  height: auto;
+  background-color: #f7f9fb;
+  padding: 2.6rem;
+}
+
+.contentHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contentHeaderUser {
+  width: 14.6rem;
+  height: 3.37rem;
+
+  background: #FFFFFF;
+  border: 1px solid #D8D8D8;
+  border-radius: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px;
+  margin-bottom: 3.5rem;
+}
+
+.imgAvatar {
+  height: 42px;
+  width: 42px;
+  border-radius: 60px;
+  margin-right: 8px;
+}

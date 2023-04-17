@@ -1,0 +1,16 @@
+
+.contentInput {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+::placeholder{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #A0A0A0;
+}

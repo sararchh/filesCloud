@@ -1,0 +1,81 @@
+.containerInfos {
+  width: 100%;
+  height: 90%;
+  padding: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.containerForm {
+  max-width: 600px;
+}
+
+.logo {
+  height: 2.93rem;
+  width: 11.87rem;
+}
+
+.title {
+  margin-top: 2rem;
+}
+
+.containerTwoColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.textTerms {
+  margin-top: 2rem;
+}
+
+.containerCheckbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.inputCheckbox {
+  margin-right: 2rem;
+  appearance: none;
+}
+
+.inputCheckbox[type="checkbox"]:after {
+  display: block;
+  width: 25px;
+  height: 25px;
+  border-radius: 10px;
+  border: 2px solid #476EE6;
+  content: "";
+  background: #FFFFFF;
+  margin-top: -30px;
+}
+
+.inputCheckbox[type="checkbox"]:checked:after {
+  background: #476EE6;
+  content: "";
+}
+
+.containerRegister {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+@media screen and (max-width: 720px){
+  .containerForm {
+    max-width: 100%;
+  }
+
+  .containerTwoColumns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerInfos {
+    padding: 2.5rem;
+  }
+}

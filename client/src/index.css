@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior:smooth ;
+  
+  @media screen and (max-width: 720px){
+    font-size: 87.5%; /* 14px */
+  }
+
+  @media screen and (max-width: 1080px){
+    font-size: 93.75%; /* 15px */
+  }
+}
+
+.textPoppinsTitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #476EE6;
+  line-height: 36px;
+  letter-spacing: 0.03em;
+}
+
+.textPoppinsTitle600 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #476EE6;
+  line-height: 36px;
+  letter-spacing: 0.03em;
+}
+
+.textPoppinsTerms {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #476EE6;
+  line-height: 36px;
+  letter-spacing: 0.03em;
+}
+
+.textPoppinsOptions {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #476EE6;
+  line-height: 36px;
+  letter-spacing: 0.03em;
+}
+
+.textPoppinsWeight600 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  line-height: 20px;
+}
+
+.textPoppinsSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+}
+
+.textPoppinsPlaceholder {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #A0A0A0;
+}
+
+.textPoppinsCheckBox {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #000000;
+  word-wrap:  normal;
+}
+
+.textPoppinsButtonRegister {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+}

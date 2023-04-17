@@ -13,6 +13,11 @@ import { RxExit } from "react-icons/rx";
 const SideMenu = () => {
   const navigate = useNavigate();
 
+  const handleExit = () => {
+    localStorage.clear();
+    navigate("/");
+  }
+
   return (
     <div className="contentMenu">
       <img src={Logo} className="imgLogo" alt="logo" />
@@ -39,7 +44,10 @@ const SideMenu = () => {
 
       <div className="cardOptions">
         <RxExit className="svgIcon" />
-        <p className="text">Sair</p>
+        <button
+          style={{ outline: "none", background: "transparent", border: "none" }}
+          className="text"
+          onClick={() => handleExit()}>Sair</button>
       </div>
 
     </div>

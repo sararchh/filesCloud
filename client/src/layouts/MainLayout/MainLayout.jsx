@@ -1,11 +1,15 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import SideMenu from "../../components/SideMenu";
 
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
-import "./style.css"
+import { UserContext } from "../../context/userContext";
 
+import "./style.css"
 const MainLayout = ({ children }) => {
+
+  const { userData } = useContext(UserContext);
+
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       <SideMenu />
@@ -16,9 +20,9 @@ const MainLayout = ({ children }) => {
           <p className="textPoppinsTitle600">Armazenamento</p>
 
           <div className="contentHeaderUser">
-            <div style={{display: "flex", alignItems:"center"}}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <img className="imgAvatar" src="https://http.cat/200" alt="avatar" />
-              <p className="textConfortaa">Nome do User</p>
+              <p className="textConfortaa">{userData?.name}</p>
             </div>
             <MdOutlineKeyboardArrowDown />
           </div>

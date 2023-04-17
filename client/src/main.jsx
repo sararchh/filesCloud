@@ -8,12 +8,15 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import "./index.css";
+import { UserProvider } from './context/userContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <RoutesApp />
-      <ToastContainer/>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <RoutesApp />
+        <ToastContainer />
+      </BrowserRouter>
+    </UserProvider>
   </React.StrictMode>,
 )

@@ -9,14 +9,17 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import "./index.css";
 import { UserProvider } from './context/userContext';
+import { FoldersProvider } from './context/foldersContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <UserProvider>
-      <BrowserRouter>
-        <RoutesApp />
-        <ToastContainer />
-      </BrowserRouter>
+      <FoldersProvider>
+        <BrowserRouter>
+          <RoutesApp />
+          <ToastContainer />
+        </BrowserRouter>
+      </FoldersProvider>
     </UserProvider>
   </React.StrictMode>,
 )

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 
 import { FiSearch } from "react-icons/fi";
@@ -7,21 +7,16 @@ import Button from "../../components/Button";
 import CardFolder from "../../components/CardFolder";
 import Input from "../../components/Input";
 
-import { getFolders } from "../../services/foldersApi";
-
 import "./style.css";
+import { FoldersContext } from "../../context/foldersContext";
 const Storage = () => {
   const [valueInput, setValueInput] = useState();
-  const [folders, setFolders] = useState([]);
+
+  const { handleGetFolders, folders } = useContext(FoldersContext);
 
   useEffect(() => {
     handleGetFolders();
   }, []);
-
-  const handleGetFolders = async () => {
-    const response = await getFolders();
-    setFolders(response);
-  }
 
   // console.log(folders);
 

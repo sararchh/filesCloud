@@ -147,3 +147,21 @@ html {
   line-height: 27px;
   color: #EA0000;
 }
+
+.textPoppins400 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.textPoppins600 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000000;
+}

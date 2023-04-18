@@ -1,7 +1,7 @@
 const Yup = require("yup");
 
 const folderSchema = Yup.object().shape({
-    id_user: Yup.string().required('Usuário é obrigatório'),
+    id_user: Yup.string(),
     title: Yup.string().required('Nome da pasta é obrigatório'),
 });
 

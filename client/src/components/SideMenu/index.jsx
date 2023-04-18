@@ -19,37 +19,38 @@ const SideMenu = () => {
   }
 
   return (
-    <div className="contentMenu">
-      <img src={Logo} className="imgLogo" alt="logo" />
+    <div className="contentMenuBackgroud">
+      <div className="contentMenu">
+        <img src={Logo} className="imgLogo" alt="logo" />
 
-      <div className="cardOptions" onClick={() => navigate("/storage")}>
-        <BsFolder2 className="svgIcon" />
-        <p className="text">Armazenamento</p>
+        <div className="cardOptions" onClick={() => navigate("/storage")}>
+          <BsFolder2 className="svgIcon" />
+          <p className="text">Armazenamento</p>
+        </div>
+
+        <div className="cardOptions">
+          <BsCardChecklist className="svgIcon" />
+          <p className="text">Exemplo</p>
+        </div>
+
+        <div className="cardOptions">
+          <BiMessageDots className="svgIcon" />
+          <p className="text">Exemplo</p>
+        </div>
+
+        <div className="cardOptions" style={{ marginBottom: "15rem" }}>
+          <AiOutlineSetting className="svgIcon" />
+          <p className="text">Exemplo</p>
+        </div>
+
+        <div className="cardOptions">
+          <RxExit className="svgIcon" />
+          <button
+            style={{ outline: "none", background: "transparent", border: "none" }}
+            className="text"
+            onClick={() => handleExit()}>Sair</button>
+        </div>
       </div>
-
-      <div className="cardOptions">
-        <BsCardChecklist className="svgIcon" />
-        <p className="text">Exemplo</p>
-      </div>
-
-      <div className="cardOptions">
-        <BiMessageDots className="svgIcon" />
-        <p className="text">Exemplo</p>
-      </div>
-
-      <div className="cardOptions" style={{ marginBottom: "15rem" }}>
-        <AiOutlineSetting className="svgIcon" />
-        <p className="text">Exemplo</p>
-      </div>
-
-      <div className="cardOptions">
-        <RxExit className="svgIcon" />
-        <button
-          style={{ outline: "none", background: "transparent", border: "none" }}
-          className="text"
-          onClick={() => handleExit()}>Sair</button>
-      </div>
-
     </div>
   );
 }

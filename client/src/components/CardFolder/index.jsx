@@ -13,8 +13,8 @@ import { FoldersContext } from "../../context/foldersContext";
 
 import "./style.css";
 import Input from "../Input";
-const CardFolder = ({ props }) => {
 
+const CardFolder = ({ props }) => {
   const [newDate, setNewDate] = useState("");
 
   const [valueInputModal, setValueInputModal] = useState();
@@ -45,9 +45,9 @@ const CardFolder = ({ props }) => {
     }
   }
 
-  const handleRenameFolder = async () => {
+  const handleRenameFolder = async (id) => {
     try {
-      await updateFolder(props.id, { title: valueInputModal });
+      await updateFolder(id, { title: valueInputModal });
       setOpenMenu(false);
     } catch (error) {
       toast.error("Erro ao renomear")
@@ -89,7 +89,7 @@ const CardFolder = ({ props }) => {
                   background="#476EE6"
                   border="none"
                   color="#FFFFFF"
-                  onClick={() => handleRenameFolder()}
+                  onClick={() => handleRenameFolder(props.id)}
                 >
                   Renomear</Button>
               </div>

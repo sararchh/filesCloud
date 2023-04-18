@@ -16,20 +16,15 @@ import Input from "../Input";
 const CardFolder = ({ props }) => {
 
   const [newDate, setNewDate] = useState("");
-  const [openMenu, setOpenMenu] = useState(false);
-  const [statusMenu, setStatusMenu] = useState(0);
+
   const [valueInputModal, setValueInputModal] = useState();
 
-  const { handleGetFolders } = useContext(FoldersContext);
+  const { handleGetFolders, setOpenMenu, openMenu, statusMenu, setStatusMenu } = useContext(FoldersContext);
 
   useEffect(() => {
     dateFormat();
   }, []);
 
-  useEffect(() => {
-    setStatusMenu(0);
-    handleGetFolders();
-  }, [openMenu === false]);
 
   const dateFormat = () => {
     const [datePart,] = props?.date?.split(" ");
@@ -63,7 +58,7 @@ const CardFolder = ({ props }) => {
 
     <>
       {openMenu === true &&
-        <div className="modal">
+        <div>
           {statusMenu === 0 &&
             < Modal >
               <div className="listing">

@@ -8,3 +8,19 @@
   border-radius: 20px;
   filter: drop-shadow(0px 0px 30px rgba(0, 0, 0, 0.15));
 }
+
+.modal {
+  background-color: #F7F9FB70;
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

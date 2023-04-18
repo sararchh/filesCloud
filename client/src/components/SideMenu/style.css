@@ -52,19 +52,4 @@
   line-height: 22px;
 }
 
-.modal {
-  background-color: #F7F9FB70;
-  width: 100vw;
-  height: 100vh;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  z-index: 10;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 

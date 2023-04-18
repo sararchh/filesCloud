@@ -4,8 +4,10 @@ import "./style.css";
 const Modal = ({ children }) => {
 
   return (
-    <div className="cardModal">
-      {children}
+    <div className="modal">
+      <div className="cardModal">
+        {children}
+      </div>
     </div>
   );
 }

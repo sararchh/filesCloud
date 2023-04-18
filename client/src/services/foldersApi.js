@@ -17,3 +17,9 @@ export const updateFolder = async (id, body) => {
 
   return data;
 } 
+
+export const createFolder = async (title) => {
+  const { data } = await api.post(`/folders`, title);
+
+  return data;
+} 

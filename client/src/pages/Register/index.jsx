@@ -52,7 +52,6 @@ const Register = () => {
       navigate("/storage");
       toast.success("Cadastro com sucesso");
     } catch (error) {
-      console.log(error);
       toast.error("Erro ao cadastrar, verifique")
     }
 

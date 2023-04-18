@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { debounce } from "lodash";
+
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 
 import { FiSearch } from "react-icons/fi";
@@ -14,12 +16,16 @@ import { FoldersContext } from "../../context/foldersContext";
 import "./style.css";
 import { toast } from "react-toastify";
 import { createFolder } from "../../services/foldersApi";
+
 const Storage = () => {
-  const [valueInput, setValueInput] = useState();
+
   const [valueInputCreateFolder, setValueInputCreateFolder] = useState();
   const [newFolder, setNewFolder] = useState(false);
+  const [selectedItem, setSelectedItem] = useState("");
+  const [valueInputModal, setValueInputModal] = useState();
 
-  const { handleGetFolders, setOpenMenu, folders } = useContext(FoldersContext);
+  const { handleGetFolders, folders, setFolders, setOpenMenu, openMenu, statusMenu, setStatusMenu, handleRenameFolder,
+    handleDeleteFolder, valueInputSearchFolder, setValueInputSearchFolder } = useContext(FoldersContext);
 
   useEffect(() => {
     handleGetFolders();
@@ -30,7 +36,6 @@ const Storage = () => {
   }, [newFolder === false])
 
   const handleCreateFolder = async () => {
-    console.log(valueInputCreateFolder);
     try {
       await createFolder({ title: valueInputCreateFolder });
       setNewFolder(false);
@@ -38,6 +43,19 @@ const Storage = () => {
       toast.error("Erro ao cadastrar");
     }
   }
+
+  const searchFolders = useCallback(
+    debounce((value, folders) => filterFolders(value, folders), 500),
+    []
+  )
+
+  const filterFolders = (value, folders) => {    
+    const newArray = folders.filter((i) => i.title.toUpperCase() === value.toUpperCase());
+    console.log("newArray", folders);
+    setFolders(newArray);
+  }
+
+
 
   return (
     <MainLayout>
@@ -79,6 +97,93 @@ const Storage = () => {
         </Modal>
       }
 
+      {openMenu === true &&
+        <div>
+          {statusMenu === 0 &&
+            < Modal >
+              <div className="listing">
+                <p className="textPoppinsTitleCardFolder">Ações</p>
+                <GrClose className="svgModal" onClick={() => { setOpenMenu(false) }} />
+              </div>
+              <div className="listing divCenter">
+                <p className="textPoppinsTitleCardFolder" onClick={() => setStatusMenu(1)}>Editar nome pasta</p>
+              </div>
+              <div className="listing divCenter">
+                <p className="textPoppinsRed" onClick={() => setStatusMenu(2)}>Excluir pasta</p>
+              </div>
+            </Modal>
+          }
+
+          {statusMenu === 1 &&
+            < Modal >
+              <div className="listing">
+                <span className="divCenter" >
+                  <GrClose className="svgModal" onClick={() => { setOpenMenu(false) }} style={{ marginRight: "20px" }} />
+                  <p className="textPoppinsTitleCardFolder">Renomear pasta</p>
+                </span>
+
+                <Button
+                  width="80px"
+                  height="37px"
+                  borderRadius="50px"
+                  background="#476EE6"
+                  border="none"
+                  color="#FFFFFF"
+                  onClick={() => handleRenameFolder(selectedItem?.id, valueInputModal)}
+                >
+                  Renomear</Button>
+              </div>
+              <div className="divCenter" style={{ marginTop: "2rem" }}>
+                <Input
+                  name="Nome da pasta"
+                  placeholder="Insira o nome da pasta"
+                  width="336px"
+                  height="45px"
+                  border="1px solid #E3E8EF"
+                  borderRadius="7px"
+                  padding="10px"
+                  marginTop="10px"
+                  outline="none"
+                  value={valueInputModal}
+                  onChange={(e) => setValueInputModal(e)}
+                />
+              </div>
+            </Modal>
+          }
+
+
+          {statusMenu === 2 &&
+            < Modal >
+              <div className="listing">
+                <span className="divCenter" >
+                  <GrClose className="svgModal" onClick={() => { setOpenMenu(false) }} style={{ marginRight: "20px" }} />
+                  <p className="textPoppinsTitleCardFolder">Excluir pasta</p>
+                </span>
+
+                <Button
+                  width="80px"
+                  height="37px"
+                  borderRadius="50px"
+                  background="#FFE1E1"
+                  border="none"
+                  color="#EA0000"
+                  onClick={() => handleDeleteFolder(selectedItem?.id)}
+                >
+                  Excluir</Button>
+              </div>
+              <div className="divCenter divAlignCenterText">
+                <p className="textPoppins400">
+                  Tem certeza que deseja excluir a pasta
+                  <span className="textPoppins600"> {selectedItem?.title} </span> com
+                  <span className="textPoppins600"> {selectedItem?.files_count}</span> documentos ?
+                </p>
+              </div>
+            </Modal>
+          }
+
+        </div >
+      }
+
       <div className="contentSearch">
         <span className="inputSearch">
           <Input
@@ -91,8 +196,11 @@ const Storage = () => {
             placeholder="Pesquisar pasta"
             padding="5px 45px"
             marginTopLabel="0"
-            value={valueInput}
-            onChange={(value) => setValueInput(value)}
+            value={valueInputSearchFolder}
+            onChange={(value) => {
+              setValueInputSearchFolder(value);
+              searchFolders(value, folders);
+            }}
           />
 
           <FiSearch className="svgSearch" />
@@ -114,16 +222,17 @@ const Storage = () => {
 
       <div className="contentCardFolders">
 
-        {Boolean(folders.length) && folders?.map((item, index) => (
-          <div key={index}>
+        {Boolean(folders.length) && folders.map((item) => (
+          <div key={item.id} onClick={() => setSelectedItem(item)}>
             <CardFolder
-              props={item}
+              data={item}
+              setOpenMenu={setOpenMenu}
             />
           </div>
         ))}
 
       </div>
-    </MainLayout>
+    </MainLayout >
   );
 
 }

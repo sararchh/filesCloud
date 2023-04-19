@@ -35,12 +35,12 @@
     "sharp": "^0.32.0",
     "swagger-ui-express": "^4.6.2",
     "util": "^0.12.5",
-    "yup": "^1.1.0"
+    "yup": "^1.1.0",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
-    "dotenv": "^16.0.3",
     "dotenv-expand": "^10.0.0",
     "nodemon": "^2.0.22",
     "sequelize-cli": "^6.6.0",

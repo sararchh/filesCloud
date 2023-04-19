@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development && nodemon src/server.js",
     "start": "node dist/server.js",
-    "build": "rm -rf dist && rm -rf upload && sucrase ./src -d ./dist --transforms imports && yarn build:client && yarn copy:client",
+    "build": "rm -rf upload && sucrase ./src -d ./dist --transforms imports && yarn build:client && yarn copy:client",
     "build:client": "cd client && yarn build && cd ..",
     "copy:client": "copyfiles -a client/dist/**/* dist/",
     "db:migrate": "yarn sequelize db:migrate",

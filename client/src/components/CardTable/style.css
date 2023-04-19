@@ -1,0 +1,83 @@
+.containerTr {
+  width: 100%;
+  height: 55px;
+
+  margin-top:1rem;
+  background:#FFFFFF;
+  border: 1px solid #D7D7D7;
+  border-radius:10px;
+
+  display: flex;
+  align-items: center;
+  padding: 20px;
+ }
+ 
+ .containerT {
+  max-width: 300px;
+  width: calc(100% / 5);
+
+  display: flex;
+  align-items: start;
+ }
+
+ .containerTrMobile {
+  display: none;
+ }
+
+ .containerTrWidth {
+  height: 75px;
+ }
+
+.divStyleTitleFile{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #E4E4EF;
+  padding-bottom: 5px;
+}
+
+.alignIcon {
+  display: flex;
+ justify-content: end;
+}
+
+.svgFile {
+  width: 20px;
+  height: 20px;
+  margin-right: 2rem;
+  cursor: pointer;
+ }
+
+.alignTextInfos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 7px 0;
+}
+
+ @media screen and (max-width: 768px){
+
+  .containerDesktop {
+    display: none;
+  }
+
+  .containerTrMobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 191px;
+    height: 100%;
+    padding: 1.5rem;
+  }
+
+  .containerT {
+    width: 100%;
+  }
+
+  .svgFile {
+    margin-right: 10px;
+  }
+ 
+ }

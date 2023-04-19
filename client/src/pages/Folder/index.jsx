@@ -17,6 +17,7 @@ import imgNuvem from "../../images/png/upload-na-nuvem.png"
 import "./style.css";
 import { debounce } from "lodash";
 import { toast } from "react-toastify";
+import CardTable from "../../components/CardTable";
 
 const Folder = () => {
   const { id } = useParams();
@@ -126,12 +127,11 @@ const Folder = () => {
         </span>
 
         <table className="containerTable">
-          <tr className="containerTr">
-            <th className="textPoppinsTextFileDocs containerTh">Nome do documento</th>
-            <th className="textPoppinsTextFileDocs containerTh">Enviado por</th>
-            <th className="textPoppinsTextFileDocs containerTh">Data da Consulta</th>
-            <th className="textPoppinsTextFileDocs containerTh">Tamanho</th>
-            <td className="containerTh"></td>
+          <tr className="containerTrInfosTitle">
+            <th className="textPoppinsTextFileDocs containerT">Nome do documento</th>
+            <th className="textPoppinsTextFileDocs containerT">Enviado por</th>
+            <th className="textPoppinsTextFileDocs containerT">Data da Consulta</th>
+            <th className="textPoppinsTextFileDocs containerT">Tamanho</th>
             <th></th>
           </tr>
 
@@ -139,18 +139,13 @@ const Folder = () => {
             filteredFiles.map((item) => {
               const dateformatted = handleFormatDate(item.updatedAt)
               return (
-                <tr className="containerTr containerTrWidth textPoppinsCheckBox" key={item.id}>
-                  <td className="containerTh">{item.original_name}</td>
-                  <td className="containerTh">{userData?.name}</td>
-                  <td className="containerTh">{dateformatted}</td>
-                  <td className="containerTh">{item.size}</td>
-                  <td className="containerTh" >
-                    <a onClick={() => window.open(item.url, "_blank")} >
-                      <RiDownloadCloud2Line className="svgFile" />
-                    </a>
-                    <RiDeleteBin6Line className="svgFile" onClick={() => handleDeleteFile(item)} />
-                  </td>
-                </tr>
+                <CardTable
+                  key={item.id}
+                  item={item}
+                  dateformatted={dateformatted}
+                  handleDeleteFile={handleDeleteFile}
+                  userData={userData}
+                />
               )
             })
 
@@ -159,18 +154,13 @@ const Folder = () => {
               const dateformatted = handleFormatDate(item.updatedAt)
 
               return (
-                <tr className="containerTr containerTrWidth textPoppinsCheckBox" key={item.id}>
-                  <td className="containerTh">{item.original_name}</td>
-                  <td className="containerTh">{userData?.name}</td>
-                  <td className="containerTh">{dateformatted}</td>
-                  <td className="containerTh">{item.size}</td>
-                  <td className="containerTh">
-                    <a onClick={() => window.open(item.url, "_blank")} >
-                      <RiDownloadCloud2Line className="svgFile" />
-                    </a>
-                    <RiDeleteBin6Line className="svgFile" onClick={() => handleDeleteFile(item)} />
-                  </td>
-                </tr>
+                <CardTable
+                  key={item.id}
+                  item={item}
+                  dateformatted={dateformatted}
+                  handleDeleteFile={handleDeleteFile}
+                  userData={userData}
+                />
               )
             })
           }

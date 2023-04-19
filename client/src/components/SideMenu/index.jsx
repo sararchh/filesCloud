@@ -9,9 +9,8 @@ import { BiMessageDots } from "react-icons/bi";
 import { BsCardChecklist } from "react-icons/bs";
 import { AiOutlineSetting } from "react-icons/ai";
 import { RxExit } from "react-icons/rx";
-import { UserContext } from "../../context/userContext";
 
-const SideMenu = () => {
+const SideMenu = ({ className = "", setOpenSideMenu }) => {
   const navigate = useNavigate();
 
   const handleExit = () => {
@@ -20,7 +19,7 @@ const SideMenu = () => {
   }
 
   return (
-    <div className="contentMenuBackgroud">
+    <div className={`contentMenuBackgroud ${className}`} >
       <div className="contentMenu">
         <img src={Logo} className="imgLogo" alt="logo" />
 
@@ -52,6 +51,8 @@ const SideMenu = () => {
             onClick={() => handleExit()}>Sair</button>
         </div>
       </div>
+
+      <div className="divCloseSideMenu" onClick={() => setOpenSideMenu(false)} />
     </div>
   );
 }

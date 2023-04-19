@@ -58,4 +58,35 @@
   line-height: 22px;
 }
 
+.divCloseSideMenu {
+  display: none;
+}
 
+@media screen and (max-width: 768px){
+  .contentMenuBackgroud {
+    display: none;
+  }
+
+  .menuMobile {
+    display: block;
+  }
+
+  .divCloseSideMenu {
+    display: block;
+    width: calc(100% - 229px);
+    min-height: 100vh;
+    height: 100%;
+    background-color: #E5E5E580;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+  }
+
+  .contentMenu{
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}

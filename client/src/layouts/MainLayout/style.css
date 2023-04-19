@@ -1,6 +1,7 @@
 .contentMain {
   width: calc(100% - 229px);
-  height: auto;
+  min-height: 100vh;
+  height: 100%;
   background-color: #f7f9fb;
   padding: 2.6rem;
 }
@@ -47,9 +48,26 @@
   height: 3.37rem;
 }
 
+.contentHeaderMobile {
+  display: none;
+}
+
+.logoMobile {
+  width: 153px;
+}
+
+.iconMenu {
+  height: 23px;
+  width: 27px;
+  color: #476EE6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 967px){
   .contentMain {
     padding: 2rem;
+    min-height: 100vh;
+    height: 100%;
   }
 }
 
@@ -58,16 +76,28 @@
     padding: 2rem;
     width: 100%;
     height: 100vh;
+    min-height: 100vh;
+    height: 100%;
   }
 
   .contentHeader {
+    display: none;
+  }
+
+  .contentHeaderMobile {
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-content: space-between;
     margin-bottom: 2rem;
   }
 
   .contentHeaderUser {
     margin-bottom: 0;
+  }
+
+  .imgAvatar {
+    height: 40px;
+    width: 40px;
   }
 }

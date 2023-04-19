@@ -23,6 +23,7 @@ const Storage = () => {
   const [newFolder, setNewFolder] = useState(false);
   const [selectedItem, setSelectedItem] = useState("");
   const [valueInputModal, setValueInputModal] = useState();
+  const [filteredFolder, setFilteredFolder] = useState([]);
 
   const { handleGetFolders, folders, setFolders, setOpenMenu, openMenu, statusMenu, setStatusMenu, handleRenameFolder,
     handleDeleteFolder, valueInputSearchFolder, setValueInputSearchFolder } = useContext(FoldersContext);
@@ -49,10 +50,9 @@ const Storage = () => {
     []
   )
 
-  const filterFolders = (value, folders) => {    
-    const newArray = folders.filter((i) => i.title.toUpperCase() === value.toUpperCase());
-    console.log("newArray", folders);
-    setFolders(newArray);
+  const filterFolders = (value, folders) => {
+    const newArray = folders.filter((i) => i.title.toUpperCase().trim() === value.toUpperCase().trim());
+    setFilteredFolder(newArray)
   }
 
 
@@ -222,14 +222,27 @@ const Storage = () => {
 
       <div className="contentCardFolders">
 
-        {Boolean(folders.length) && folders.map((item) => (
-          <div key={item.id} onClick={() => setSelectedItem(item)}>
-            <CardFolder
-              data={item}
-              setOpenMenu={setOpenMenu}
-            />
-          </div>
-        ))}
+        {filteredFolder.length > 0  ?
+          Boolean(filteredFolder) && filteredFolder.map((item) => (
+            <div key={item.id} onClick={() => setSelectedItem(item)}>
+              <CardFolder
+                data={item}
+                setOpenMenu={setOpenMenu}
+              />
+            </div>
+          ))
+          :
+          Boolean(folders.length) && folders.map((item) => (
+            <div key={item.id} onClick={() => setSelectedItem(item)}>
+              <CardFolder
+                data={item}
+                setOpenMenu={setOpenMenu}
+              />
+            </div>
+          ))
+        }
+
+
 
       </div>
     </MainLayout >

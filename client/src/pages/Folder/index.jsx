@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
+import { FileUploader } from "react-drag-drop-files";
 import { useParams } from 'react-router-dom';
 
 import { FiSearch } from "react-icons/fi";
@@ -8,7 +9,7 @@ import MainLayout from "../../layouts/MainLayout/MainLayout";
 import Input from "../../components/Input";
 
 import { getOneFolder } from "../../services/foldersApi";
-import { deleteFile, listFiles } from "../../services/filesApi";
+import { createFile, deleteFile, listFiles } from "../../services/filesApi";
 import { UserContext } from "../../context/userContext";
 
 import imgNuvem from "../../images/png/upload-na-nuvem.png"
@@ -74,13 +75,33 @@ const Folder = () => {
     }
   }
 
+  const handleChange = async (file) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      await createFile(id, formData);
+      fetchDataFiles();
+    } catch (error) {
+      toast.error("Erro");
+    }
+
+  };
+
   return (
     <MainLayout pageTitle={folder?.title} btnReturn={true}>
       <div className="containerFolder">
 
         <div className="selectFile">
           <img src={imgNuvem} alt="Upload na nuvem" className="imgNuvem" />
-          <p className="textPoppinsTextFile">Selecione um arquivo ou solte aqui</p>
+
+          <FileUploader
+            handleChange={handleChange}
+            name="file"
+            label="Selecione um arquivo ou solte aqui"
+            hoverTitle="Selecione um arquivo ou solte aqui"
+            classes="drop_area"
+          />
         </div>
 
         <span className="inputSearchDoc">
@@ -142,7 +163,9 @@ const Folder = () => {
                   <td className="containerTh">{dateformatted}</td>
                   <td className="containerTh">{item.size}</td>
                   <td className="containerTh">
-                    <RiDownloadCloud2Line className="svgFile" />
+                    <a onClick={() => window.open(item.url, "_blank")} >
+                      <RiDownloadCloud2Line className="svgFile" />
+                    </a>
                     <RiDeleteBin6Line className="svgFile" onClick={() => handleDeleteFile(item)} />
                   </td>
                 </tr>

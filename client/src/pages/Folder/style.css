@@ -17,6 +17,27 @@
   flex-direction: column;
 }
 
+.selectFile > .drop_area{
+  border: none;
+}
+
+.selectFile > .drop_area > svg{
+  display: none;
+}
+
+.llmFop{
+  font-family: 'Poppins' !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px !important;
+  line-height: 26px;
+  color: #000000 !important;
+}
+
+.llmFop > span {
+  text-decoration: none !important;
+}
+
 .imgNuvem {
   width: 60px;
   height: 60px;

@@ -6,8 +6,8 @@ export const listFiles = async (id) => {
   return data;
 }
 
-export const createFile = async (id) => {
-  const { data } = await api.post(`/files/${id}`);
+export const createFile = async (id, values) => {
+  const { data } = await api.post(`/files/${id}`, values);
 
   return data;
 }

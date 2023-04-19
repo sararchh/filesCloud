@@ -16,25 +16,35 @@ import { FoldersContext } from "../../context/foldersContext";
 import "./style.css";
 import { toast } from "react-toastify";
 import { createFolder } from "../../services/foldersApi";
+import { UserContext } from "../../context/userContext";
 
 const Storage = () => {
 
-  const [valueInputCreateFolder, setValueInputCreateFolder] = useState();
+  const [valueInputCreateFolder, setValueInputCreateFolder] = useState("");
   const [newFolder, setNewFolder] = useState(false);
- 
+
   const [valueInputModal, setValueInputModal] = useState();
   const [filteredFolder, setFilteredFolder] = useState([]);
 
   const { handleGetFolders, folders, setOpenMenu, openMenu, statusMenu, setStatusMenu, handleRenameFolder,
     handleDeleteFolder, valueInputSearchFolder, setValueInputSearchFolder, selectedItem, setSelectedItem } = useContext(FoldersContext);
 
+  const { saveUserData } = useContext(UserContext);
+
   useEffect(() => {
     handleGetFolders();
+    saveUserData();
   }, []);
 
   useEffect(() => {
     handleGetFolders();
+    setValueInputCreateFolder("");
   }, [newFolder === false])
+
+  useEffect(() => {
+    setValueInputModal("");
+  }, [statusMenu])
+
 
   const handleCreateFolder = async () => {
     try {
@@ -51,7 +61,7 @@ const Storage = () => {
   )
 
   const filterFolders = (value, folders) => {
-    const newArray = folders.filter((i) => i.title.toUpperCase().trim() === value.toUpperCase().trim());
+    const newArray = folders.filter((i) => i.title.toUpperCase().includes(value.toUpperCase()))
     setFilteredFolder(newArray)
   }
 
@@ -220,7 +230,7 @@ const Storage = () => {
 
       <div className="contentCardFolders">
 
-        {filteredFolder.length > 0  ?
+        {filteredFolder.length > 0 ?
           Boolean(filteredFolder) && filteredFolder.map((item) => (
             <div key={item.id} onClick={() => setSelectedItem(item)}>
               <CardFolder

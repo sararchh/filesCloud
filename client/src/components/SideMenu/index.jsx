@@ -9,6 +9,7 @@ import { BiMessageDots } from "react-icons/bi";
 import { BsCardChecklist } from "react-icons/bs";
 import { AiOutlineSetting } from "react-icons/ai";
 import { RxExit } from "react-icons/rx";
+import { UserContext } from "../../context/userContext";
 
 const SideMenu = () => {
   const navigate = useNavigate();

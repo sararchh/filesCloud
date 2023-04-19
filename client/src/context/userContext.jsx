@@ -7,13 +7,15 @@ export function UserProvider({ children }) {
   const [userData, setUserData] = useState("");
 
   useEffect(() => {
-    if (typeof window !== undefined) {
-      const getToken = localStorage.getItem('@TOKEN');
-      const getUserData = localStorage.getItem('@MAIL');
-      setToken(getToken ? getToken : "");
-      setUserData(getUserData ? JSON.parse(getUserData) : "");
-    }
+    saveUserData();
   }, [])
+
+  function saveUserData()  {
+    const getToken = localStorage.getItem('@TOKEN');
+    const getUserData = localStorage.getItem('@MAIL');
+    setToken(getToken ? getToken : "");
+    setUserData(getUserData ? JSON.parse(getUserData) : "");
+  }
 
   return (
     <UserContext.Provider
@@ -21,7 +23,8 @@ export function UserProvider({ children }) {
         token,
         setToken,
         userData,
-        setUserData
+        setUserData,
+        saveUserData
       }}>
       {children}
     </UserContext.Provider>

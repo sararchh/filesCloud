@@ -48,7 +48,7 @@ const Folder = () => {
   );
 
   const filterFiles = (value, files) => {
-    const newArray = files.filter((i) => i.original_name.toUpperCase().trim() === value.toUpperCase().trim());
+    const newArray = files.filter((i) => i.original_name.toUpperCase().includes(value.toUpperCase()))
     setFilteredFiles(newArray);
   }
 
@@ -145,7 +145,9 @@ const Folder = () => {
                   <td className="containerTh">{dateformatted}</td>
                   <td className="containerTh">{item.size}</td>
                   <td className="containerTh" >
-                    <RiDownloadCloud2Line className="svgFile" />
+                    <a onClick={() => window.open(item.url, "_blank")} >
+                      <RiDownloadCloud2Line className="svgFile" />
+                    </a>
                     <RiDeleteBin6Line className="svgFile" onClick={() => handleDeleteFile(item)} />
                   </td>
                 </tr>

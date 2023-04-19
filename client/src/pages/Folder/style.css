@@ -34,7 +34,7 @@
   color: #000000 !important;
 }
 
-.llmFop{
+.drop_area > div > span {
   font-family: 'Poppins' !important;
   font-style: normal;
   font-weight: 500;
@@ -42,6 +42,7 @@
   line-height: 26px;
   color: #000000 !important;
 }
+
 
 .llmFop > span {
   text-decoration: none !important;

@@ -148,6 +148,24 @@ html {
   color: #EA0000;
 }
 
+.textPoppinsTextFile {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 26px;
+  color: #000000;
+}
+
+.textPoppinsTextFileDocs {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #6A6A6A; 
+}
+
 .textPoppins400 {
   font-family: 'Poppins';
   font-style: normal;

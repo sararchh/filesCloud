@@ -33,6 +33,20 @@
   margin-right: 8px;
 }
 
+.btnReturn {
+  height: 25.2px;
+  width: 25.2px;
+  color: #476EE6;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.contentTitleAndBtn {
+  display: flex;
+  align-items: center;
+  height: 3.37rem;
+}
+
 @media screen and (max-width: 967px){
   .contentMain {
     padding: 2rem;

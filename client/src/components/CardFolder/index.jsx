@@ -1,20 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { HiFolderMinus } from "react-icons/hi2";
 import { FaEllipsisV } from "react-icons/fa";
-import { GrClose } from "react-icons/gr";
 
 import { namesOfMonths } from "../../utils/months";
-import Modal from "../Modal";
-import Button from "../Button";
-import { deleteFolder, updateFolder } from "../../services/foldersApi";
-import { FoldersContext } from "../../context/foldersContext";
 
 import "./style.css";
-import Input from "../Input";
 
 const CardFolder = ({ data, setOpenMenu, }) => {
+  const navigate = useNavigate();
   const [newDate, setNewDate] = useState("");
 
   useEffect(() => {
@@ -39,7 +34,7 @@ const CardFolder = ({ data, setOpenMenu, }) => {
             <HiFolderMinus className="svgFolder" />
           </div>
 
-          <div style={{ marginBottom: "1.2rem" }}>
+          <div style={{ marginBottom: "1.2rem", cursor:"pointer" }} onClick={()=> navigate(`/storage/folder/${data?.id}`)}>
             <p className="textPoppinsTitleCardFolder">{data?.title}</p>
             <p className="textPoppinsSubtitleCardFolder">{newDate}</p>
           </div>

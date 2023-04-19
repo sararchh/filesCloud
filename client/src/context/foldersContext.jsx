@@ -8,6 +8,7 @@ export const FoldersContext = createContext({});
 export function FoldersProvider({ children }) {
   const [folders, setFolders] = useState([]);
   const [valueInputSearchFolder, setValueInputSearchFolder] = useState();
+  const [selectedItem, setSelectedItem] = useState("");
 
   const [openMenu, setOpenMenu] = useState(false);
   const [statusMenu, setStatusMenu] = useState(0);
@@ -57,7 +58,9 @@ export function FoldersProvider({ children }) {
         handleRenameFolder,
         handleDeleteFolder,
         valueInputSearchFolder,
-        setValueInputSearchFolder
+        setValueInputSearchFolder,
+        selectedItem, 
+        setSelectedItem
       }}>
       {children}
     </FoldersContext.Provider>

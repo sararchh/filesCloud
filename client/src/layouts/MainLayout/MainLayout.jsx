@@ -1,12 +1,16 @@
-import React, { useContext, useEffect } from "react"
-import SideMenu from "../../components/SideMenu";
+import React, { useContext } from "react"
+import { useNavigate } from "react-router-dom";
 
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 
+import SideMenu from "../../components/SideMenu";
 import { UserContext } from "../../context/userContext";
 
 import "./style.css"
-const MainLayout = ({ children }) => {
+
+const MainLayout = ({ children, pageTitle, btnReturn = false }) => {
+  const navigate = useNavigate();
 
   const { userData } = useContext(UserContext);
 
@@ -17,7 +21,12 @@ const MainLayout = ({ children }) => {
       <div className="contentMain">
 
         <header className="contentHeader">
-          <p className="textPoppinsTitle600">Armazenamento</p>
+          <div className="contentTitleAndBtn">
+            {btnReturn &&
+              <IoIosArrowDropleftCircle className="btnReturn" onClick={() => navigate("/storage")} />
+            }
+            <p className="textPoppinsTitle600">{pageTitle}</p>
+          </div>
 
           <div className="contentHeaderUser">
             <div style={{ display: "flex", alignItems: "center" }}>

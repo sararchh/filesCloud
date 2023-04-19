@@ -21,12 +21,12 @@ const Storage = () => {
 
   const [valueInputCreateFolder, setValueInputCreateFolder] = useState();
   const [newFolder, setNewFolder] = useState(false);
-  const [selectedItem, setSelectedItem] = useState("");
+ 
   const [valueInputModal, setValueInputModal] = useState();
   const [filteredFolder, setFilteredFolder] = useState([]);
 
-  const { handleGetFolders, folders, setFolders, setOpenMenu, openMenu, statusMenu, setStatusMenu, handleRenameFolder,
-    handleDeleteFolder, valueInputSearchFolder, setValueInputSearchFolder } = useContext(FoldersContext);
+  const { handleGetFolders, folders, setOpenMenu, openMenu, statusMenu, setStatusMenu, handleRenameFolder,
+    handleDeleteFolder, valueInputSearchFolder, setValueInputSearchFolder, selectedItem, setSelectedItem } = useContext(FoldersContext);
 
   useEffect(() => {
     handleGetFolders();
@@ -55,10 +55,8 @@ const Storage = () => {
     setFilteredFolder(newArray)
   }
 
-
-
   return (
-    <MainLayout>
+    <MainLayout pageTitle="Armazenamento">
 
       {newFolder === true &&
         < Modal >

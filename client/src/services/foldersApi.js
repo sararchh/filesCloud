@@ -23,3 +23,9 @@ export const createFolder = async (title) => {
 
   return data;
 } 
+
+export const getOneFolder = async (id) => {
+  const { data } = await api.get(`/folders/${id}`);
+
+  return data;
+}

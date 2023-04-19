@@ -4,12 +4,8 @@ import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Storage from '../pages/Storage';
 import PrivateRoute from '../pages/PrivateRoute';
+import Folder from '../pages/Folder';
 
-const NotFound = () => {
-  return (
-    <p>Não encontrado</p>
-  )
-}
 
 const RoutesApp = () => {
   return (
@@ -19,6 +15,7 @@ const RoutesApp = () => {
       <Route path='/login' element={<Login />} />
 
       <Route path='/storage' element={<PrivateRoute> <Storage /> </PrivateRoute>} />
+      <Route path='/storage/folder/:id' element={<PrivateRoute> <Folder /> </PrivateRoute>} />
 
 
     </Routes>

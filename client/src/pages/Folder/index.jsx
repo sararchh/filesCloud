@@ -3,7 +3,6 @@ import { FileUploader } from "react-drag-drop-files";
 import { useParams } from 'react-router-dom';
 
 import { FiSearch } from "react-icons/fi";
-import { RiDeleteBin6Line, RiDownloadCloud2Line } from "react-icons/ri";
 
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import Input from "../../components/Input";
@@ -26,6 +25,7 @@ const Folder = () => {
   const [files, setFiles] = useState([]);
   const [valueInputSearchDoc, setValueInputSearchDoc] = useState("");
   const [filteredFiles, setFilteredFiles] = useState([]);
+  const [fileUploaded, setFileUploaded] = useState(null);
 
   useEffect(() => {
     const fetchDataFolder = async () => {
@@ -83,6 +83,7 @@ const Folder = () => {
 
       await createFile(id, formData);
       fetchDataFiles();
+      setFileUploaded(file);
     } catch (error) {
       toast.error("Erro");
     }
@@ -102,6 +103,7 @@ const Folder = () => {
             label="Selecione um arquivo ou solte aqui"
             hoverTitle="Selecione um arquivo ou solte aqui"
             classes="drop_area"
+            children={fileUploaded ? "Upload realizado. Realizar outro?" : null}
           />
         </div>
 

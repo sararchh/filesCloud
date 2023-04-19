@@ -28,6 +28,7 @@ routes
 // Pastas
 routes
     .get("/api/folders", authMiddleware, ControllerFolder.list)
+    .get("/api/folders/:id", authMiddleware, ControllerFolder.findOne)
     .post("/api/folders", [authMiddleware, validationSchemaMiddleware(folderSchema)], ControllerFolder.store)
     .put("/api/folders/:id", [authMiddleware, validationSchemaMiddleware(folderSchemaUpdate)], ControllerFolder.update)
     .delete("/api/folders/:id", authMiddleware, ControllerFolder.delete)

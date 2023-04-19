@@ -109,10 +109,27 @@ class ControllerFolder {
             return res.status(200).send(folderList)
 
         } catch (error) {
-            console.log("error: ", error);
             return res.status(400).send(requestOperationError());
         }
 
+    }
+
+    async findOne(req, res) {
+        try {
+            const { id } = req.params
+
+            const folderExists = await Folder.findByPk(id);
+            if (!folderExists) throw folderRequestError.registerNotFoundError();
+
+            return res.status(200).send(folderExists);
+
+        } catch (error) {
+            if (error.name == "RegisterNotFoundError") {
+                return res.status(400).send(folderRequestError.registerNotFoundError());
+            }
+
+            return res.status(400).send(requestOperationError());
+        }
     }
 
 

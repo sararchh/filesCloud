@@ -39,10 +39,4 @@ routes
     .post("/api/files/:id", [authMiddleware, uploadFile.single('file')], ControllerFile.store)
     .delete("/api/files/:id", authMiddleware, ControllerFile.delete)
 
-//TRATAMENTO PARA ROTAS INVALIDAS
-routes
-    .get('*', (req, res, next) => { return res.status(404).json({ message: `Não existe rota para a requisição solicitada ${req.url}, verifique.` }) })
-    .post('*', (req, res, next) => { return res.status(404).json({ message: `Não existe rota para a requisição solicitada ${req.url}, verifique.` }) });
-
-
 module.exports = routes;

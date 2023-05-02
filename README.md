@@ -5,7 +5,9 @@
 
   
 ## About
-Back-end for testing and listing toxicological exams, where it is possible to pass the results and receive the test whether it was positive or negative
+File upload application using AWS S3.
+
+Created using ReactJS and NodeJS
 
 ## How to run for development
 

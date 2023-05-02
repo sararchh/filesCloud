@@ -12,8 +12,8 @@
 }
 
 .logo {
-  height: 2.93rem;
-  width: 11.87rem;
+  height: 6rem;
+  width: 18rem;
 }
 
 .title {
@@ -47,14 +47,14 @@
   width: 25px;
   height: 25px;
   border-radius: 10px;
-  border: 2px solid #476EE6;
+  border: 2px solid #6c63ff;
   content: "";
   background: #FFFFFF;
   margin-top: -30px;
 }
 
 .inputCheckbox[type="checkbox"]:checked:after {
-  background: #476EE6;
+  background: #6c63ff;
   content: "";
 }
 

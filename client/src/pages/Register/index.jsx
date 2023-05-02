@@ -136,7 +136,7 @@ const Register = () => {
               <Button
                 width="16.68rem"
                 height="2.81rem"
-                background="#476EE6"
+                background="#6c63ff"
                 borderRadius="60px"
                 color="white"
                 border="none"

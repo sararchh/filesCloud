@@ -37,7 +37,7 @@
 .btnReturn {
   height: 25.2px;
   width: 25.2px;
-  color: #476EE6;
+  color: #6c63ff;
   margin-right: 1rem;
   cursor: pointer;
 }
@@ -53,13 +53,13 @@
 }
 
 .logoMobile {
-  width: 153px;
+  width: 180px;
 }
 
 .iconMenu {
   height: 23px;
   width: 27px;
-  color: #476EE6;
+  color: #6c63ff;
   cursor: pointer;
 }
 

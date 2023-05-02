@@ -43,7 +43,7 @@ const Login = () => {
     <ThowColumnLayoutLoginRegister>
       <div className="containerInfosLogin">
         <div className="containerFormLogin">
-          <img className="logo" src={Logo} alt="logo" />
+          <img className="logo" src={Logo} alt="logo"  />
           <p className="textPoppinsTitle title">Dados de acesso</p>
 
           <form onSubmit={handleSubmitValues}>
@@ -88,7 +88,7 @@ const Login = () => {
                 <Button
                   width="11rem"
                   height="2.81rem"
-                  background="#476EE6"
+                  background="#6c63ff"
                   borderRadius="60px"
                   color="white"
                   border="none"

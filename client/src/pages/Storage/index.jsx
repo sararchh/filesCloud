@@ -80,7 +80,7 @@ const Storage = () => {
               width="80px"
               height="37px"
               borderRadius="50px"
-              background="#476EE6"
+              background="#6c63ff"
               border="none"
               color="#FFFFFF"
               onClick={() => handleCreateFolder()}
@@ -134,7 +134,7 @@ const Storage = () => {
                   width="80px"
                   height="37px"
                   borderRadius="50px"
-                  background="#476EE6"
+                  background="#6c63ff"
                   border="none"
                   color="#FFFFFF"
                   onClick={() => handleRenameFolder(selectedItem?.id, valueInputModal)}
@@ -219,7 +219,7 @@ const Storage = () => {
           color="white"
           width="176px"
           height="45px"
-          background="#476EE6"
+          background="#6c63ff"
           borderRadius="60px"
           border="none"
           onClick={() => setNewFolder(true)}

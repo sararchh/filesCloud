@@ -22,8 +22,8 @@
 }
 
 .imgLogo {
-  width: 9.5rem;
-  height: 2.37rem;
+  width: 10rem;
+  height: 3.5rem;
   margin-bottom: 3rem;
 }
 
@@ -41,7 +41,7 @@
 
 .cardOptions:hover {
   background: #F7F9FB;
-  color: #476EE6;
+  color: #6c63ff;
 }
 
 .svgIcon {

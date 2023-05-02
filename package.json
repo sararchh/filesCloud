@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "16.14.0"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development && nodemon src/server.js",
     "start": "node dist/server.js",
